@@ -110,50 +110,50 @@ verif = true
 continue = true
 
 while continue == true
-while verif == true && count <= 9
-  if help == true
-    puts "/!\\ Attention /!\\ \nVoici une aide pour le choix des cases :\n1 | 2 | 3\n---------\n4 | 5 | 6\n---------\n7 | 8 | 9"
-    help = false
+  while verif == true && count <= 9
+    if help == true
+      puts "/!\\ Attention /!\\ \nVoici une aide pour le choix des cases :\n1 | 2 | 3\n---------\n4 | 5 | 6\n---------\n7 | 8 | 9"
+      help = false
+    end
+    puts "Choisir une case entre 1 et 9 :"
+    choice = gets.chomp.to_i
+    if choice <= 9 && choice > 0
+      if count % 2 == 0 && count != 1
+        game, count = BoardCase.new(game, choice, "x".red, count)
+        game, count = game.board_update
+      else
+        game, count = BoardCase.new(game, choice, "o".blue, count)
+        game, count = game.board_update
+      end
+      win = Verification.new(game, count)
+      win = win.is_finished
+      if win == 0
+        count += 1
+      elsif win == 1
+        puts "#{player1} à gagné !"
+        verif = false
+      elsif win == 2
+        puts "#{player2} à gagné !"
+        verif = false
+      else
+        puts "Égalité !"
+        verif = false
+      end
+    else
+      puts "Entrez un nombre entre 1 et 9"
+    end
   end
-  puts "Choisir une case entre 1 et 9 :"
-  choice = gets.chomp.to_i
-  if choice <= 9 && choice > 0
-    if count % 2 == 0 && count != 1
-      game, count = BoardCase.new(game, choice, "x".red, count)
-      game, count = game.board_update
-    else
-      game, count = BoardCase.new(game, choice, "o".blue, count)
-      game, count = game.board_update
-    end
-    win = Verification.new(game, count)
-    win = win.is_finished
-    if win == 0
-      count += 1
-    elsif win == 1
-      puts "#{player1} à gagné !"
-      verif = false
-    elsif win == 2
-      puts "#{player2} à gagné !"
-      verif = false
-    else
-      puts "Égalité !"
-      verif = false
-    end
+  puts "Voulez vous recommencer ? [o,n]"
+  var = gets.chomp
+  if var == "o"
+    continue = true
+    game = Board.new
+    game = game.base_board
+    count = 0
+    help = true
+    verif = true
+    continue = true
   else
-    puts "Entrez un nombre entre 1 et 9"
+    continue = false
   end
-end
-puts "Voulez vous recommencer ? [o,n]"
-var = gets.chomp
-if var == "o"
-  continue = true
-  game = Board.new
-  game = game.base_board
-  count = 0
-  help = true
-  verif = true
-  continue = true
-else
-  continue = false
-end
 end
