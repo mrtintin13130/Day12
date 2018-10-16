@@ -15,6 +15,8 @@ bundle install
 ```
 Puis entrez le nom des 2 joueurs.
 
+> Nom du Xème joueur :
+
 Puis entrer la commande :
 
 ```
