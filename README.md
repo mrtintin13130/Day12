@@ -13,15 +13,16 @@ Pour lancer le jeu déplacez-vous dans le dossier du jeu et exécutez la command
 ```
 bundle install
 ```
-Puis entrez le nom des 2 joueurs.
-
-> Nom du Xème joueur :
 
 Puis entrer la commande :
 
 ```
 ruby TicTacToe.rb
 ```
+
+Puis entrez le nom des 2 joueurs.
+
+> Nom du Xème joueur :
 
 ### Les règles du jeu
 
