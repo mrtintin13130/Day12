@@ -116,8 +116,10 @@ count = 0
 help = true
 verif = true
 continue = true
+game_num = 1
 
 while continue == true
+  puts "Partie n°#{game_num}"
   while verif == true && count <= 9
     if help == true
       puts '/!\\ Attention /!\\'
@@ -165,4 +167,5 @@ while continue == true
   else
     continue = false
   end
+  game_num += 1
 end
